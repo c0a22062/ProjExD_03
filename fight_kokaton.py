@@ -146,6 +146,7 @@ class Beam:
 
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
+
     screen = pg.display.set_mode((WIDTH, HEIGHT))
     clock = pg.time.Clock()
     bg_img = pg.image.load("ex03-20230509/fig/pg_bg.jpg")
@@ -170,9 +171,10 @@ def main():
             bomb.update(screen)
             if bird._rct.colliderect(bomb._rct):
                 # ゲームオーバー時に，こうかとん画像を切り替え，1秒間表示させる
-                bird.change_img(8, screen)
+                gameover = pg.image.load("ex03-20230509/fig/go.png")
+                screen.blit(gameover,[WIDTH/2 - 350,HEIGHT/2 -100])
                 pg.display.update()
-                time.sleep(1)
+                time.sleep(3)
                 return
             
         key_lst = pg.key.get_pressed()
