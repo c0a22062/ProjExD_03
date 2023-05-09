@@ -186,7 +186,7 @@ def main():
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                 beam = Beam(bird)
             if event.type == pg.KEYDOWN and event.key == pg.K_c:
-                beam =Beam2(bird)
+                beam = Beam2(bird)
 
         tmr += 1
         screen.blit(bg_img, [0, 0])
@@ -199,7 +199,7 @@ def main():
                 gameover = pg.image.load("ex03-20230509/fig/go.png")
                 screen.blit(gameover,[WIDTH/2 - 350,HEIGHT/2 -100])
                 pg.display.update()
-                time.sleep(3)
+                time.sleep(2)
                 return
             
         key_lst = pg.key.get_pressed()
@@ -207,7 +207,7 @@ def main():
 
         if beam is not None:  # ビームが存在しているとき
             beam.update(screen)
-            for i, bomb in enumerate(bombs):
+            for i, bomb in enumerate(bombs):  # bombsを順番に取り出しiとbombに代入する
                 if beam._rct.colliderect(bomb._rct):
                     beam = None
                     del bombs[i]
